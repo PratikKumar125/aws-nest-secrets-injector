@@ -1,0 +1,38 @@
+{
+  "name": "aws-nest-secrets-injection",
+  "version": "0.1.1",
+  "description": "The secrets injection package for your NestJS Applications",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "nestjs-secrets",
+    "nestjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Pratik Kumar",
+  "private": false,
+  "license": "MIT",
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.json",
+    "format": "prettier --write \"**/*.ts\"",
+    "lint": "eslint 'lib/**/*.ts' --fix",
+    "prepublish:npm": "npm run build",
+    "publish:npm": "npm publish --access public",
+    "prepublish:next": "npm run build",
+    "publish:next": "npm publish --access public --tag next",
+    "test:e2e": "jest --config ./tests/jest-e2e.json --runInBand",
+    "test:e2e:dev": "jest --config ./tests/jest-e2e.json --runInBand --watch"
+  },
+  "devDependencies": {
+    "@nestjs/common": "^9.0.3",
+    "@types/node": "^22.10.7",
+    "typescript": "^4.9.5"
+  },
+  "peerDependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.0.0",
+    "@nestjs/common": "^7.0.0 || ^8.0.0 || ^9.0.0"
+  }
+}
