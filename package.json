@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/PratikKumar125/aws-nest-secrets-injector"
   },
   "author": "Pratik Kumar",
   "private": false,
@@ -33,6 +33,6 @@
   },
   "peerDependencies": {
     "@aws-sdk/client-secrets-manager": "^3.0.0",
-    "@nestjs/common": "^7.0.0 || ^8.0.0 || ^9.0.0"
+    "@nestjs/common": "^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0"
   }
 }
