@@ -1,16 +1,18 @@
-import { Inject, Injectable, Logger } from '@nestjs/common';
+import { Inject, Injectable, Logger, OnApplicationBootstrap, OnModuleInit } from '@nestjs/common';
 import { GetSecretValueCommand } from '@aws-sdk/client-secrets-manager';
 import { AWS_SECRETS_MANAGER_MODULE_OPTIONS } from './constants';
 import { AWSSecretsManagerModuleOptions } from './interfaces';
 
 @Injectable()
-export class AWSSecretsService {
+export class AWSSecretsService implements OnApplicationBootstrap {
   private readonly logger = new Logger(AWSSecretsService.name);
 
   constructor(
     @Inject(AWS_SECRETS_MANAGER_MODULE_OPTIONS)
     private readonly options: AWSSecretsManagerModuleOptions,
-  ) {
+  ) {}
+
+  onApplicationBootstrap() {
     if (this.options.secretsSource && this.options.isSetToEnv) {
       this.setAllSecrectToEnv();
     }
