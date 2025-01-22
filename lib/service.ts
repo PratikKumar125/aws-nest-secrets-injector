@@ -4,7 +4,7 @@ import { AWS_SECRETS_MANAGER_MODULE_OPTIONS } from './constants';
 import { AWSSecretsManagerModuleOptions } from './interfaces';
 
 @Injectable()
-export class AWSSecretsService implements OnApplicationBootstrap {
+export class AWSSecretsService implements OnModuleInit {
   private readonly logger = new Logger(AWSSecretsService.name);
 
   constructor(
@@ -12,7 +12,7 @@ export class AWSSecretsService implements OnApplicationBootstrap {
     private readonly options: AWSSecretsManagerModuleOptions,
   ) {}
 
-  onApplicationBootstrap() {
+  onModuleInit() {
     if (this.options.secretsSource && this.options.isSetToEnv) {
       this.setAllSecrectToEnv();
     }
